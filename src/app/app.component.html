@@ -4,13 +4,17 @@
       <img src="assets/temperature.png" alt="Thermometer icon"/>
       <div>
         <h2>Current Temperature</h2>
-        <p>{{currentDate}}</p>
+        <p>{{currentDate | date : 'longD ate'}}</p>
+       
+        <p>{{currentDate | date : 'mediumTime'}}</p>
       </div>
       </header>
-      <p>New York:{{currentTemperature.newYork}}</p>
-      <p>Berlin:{{currentTemperature.berlin}}</p>
-      <p>Paris:{{currentTemperature.paris}}</p>
-      <p>Chicago:{{currentTemperature.chicago}}</p>
+      <p>New York : {{currentTemperature.newYork  | temp : 'fah':'cel'}}</p>
+      <!-- convert fah to fah -->
+      <p>Berlin : {{currentTemperature.berlin | temp:'fah'}}</p> 
+      <p>Paris : {{currentTemperature.paris | temp:'cel': 'fah'}}</p>
+      <!--cel to cel-->
+      <p>Chicago : {{currentTemperature.chicago | temp:'cel'}}</p>
 
 
     </article>
@@ -25,8 +29,8 @@
     </div>
     </header>
     <ul>
-      @for(temperature of historicTemperatures; track temperature){
-        <li>{{temperature}}</li>
+      @for(temperature of (historicTemperatures ); track temperature){
+        <li style="padding: 3px;">{{temperature | temp : 'cel' }}</li>
       }
     </ul>
   </article>
